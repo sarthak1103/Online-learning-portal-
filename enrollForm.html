@@ -1,0 +1,105 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<title>Enroll form </title>  
+<link rel="stylesheet" href="{% static 'css/eForm.css' %}">
+
+</head>
+
+<body topmargin= "100">
+<center>
+<form action="" method="get" id="enform" name="formal">{% csrf_token %}
+<h1><font face="<Lucida Handwriting" size=+6 color= "brown"> Student Enrollment Form</font> </h1>
+<table cellspacing="15">
+<tr>
+<td>
+<font  size=+2> <b> Full Name </b>
+</td>
+<td>
+<input id= "fname" size=+50 type="text" name="FullName">
+</td>
+</tr>
+<tr>
+<td>
+<font   size=+2> <b>Contact Number</b>
+</td>
+<td>
+<input  id= "cno" size=+50 type="text" name="ContactNo">
+</td>
+</tr>
+<tr>
+<td>
+<font  size=+2> <b>Email Id</b>
+</td>
+<td>
+<input  id= "email" size=+50 type="email" name="EmailId">
+</td>
+</tr>
+<tr>
+<td>
+<font  size=+2> <b> Password</b>
+</td>
+<td>
+<input id= "pwd" size=+50 type="password" name="Password">
+</td>
+</tr>
+<tr>
+<td>
+<font  size=+2> <b>Course </b>
+</td>
+<td>
+<select id="course" name="dropdown">
+		<option value="HTML">HTML</option>
+		<option value="Python">Python</option>
+		<option value="Java">Java</option>
+		</select>
+</td>
+</tr>
+</table>
+<br>
+<input id="e_btn" type="button" name= "Enroll" value ="Enroll" >
+</form>
+</center>
+
+</body>
+<script type="text/javascript">
+	$('#e_btn').on('click',function(e){
+				e.preventDefault();
+if($('#fname').val()=="")
+{
+ alert("First name cannot be blanked");
+ return;
+}
+if($('#cno').val().trim().length!=10)
+{
+ alert("Contact Number should be of 10 digits!");
+ return;
+}
+if($('#email').val()=="")
+{
+  alert("Email Id cannot be blanked");
+  return;
+}
+				alert("form submitted");
+				$.ajax({
+					type:'POST',
+					url:'/enrollFormAPI/',
+					data:{
+						fname:$('#fname').val(),
+						email:$('#email').val(),
+						cno:$('#cno').val(),
+						pwd:$('#pwd').val(),
+						course:$('#course').val(),
+						},
+						dataType: 'json',
+						success:function(){
+						console.log('HEREE')
+						window.location.href = "/LoginForm";
+						}
+						});
+						})
+
+</script>
+</html

@@ -1,0 +1,74 @@
+{% load static %}
+<html lang="en">
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Login Form</title>
+	<link rel="stylesheet" href="{% static 'css/jvideo.css'%}"/>
+   </head>
+<body topmargin= "100">
+<center>
+<form action="" method="get" name="formal" id="lgform">
+<h1><font face="<Lucida Handwriting" size=+6 color= "brown"> Login Form</font> </h1>
+<table cellspacing="15">
+<tr>
+<td>
+<font size=+2> <b>Email Id</b>
+</td>
+<td>
+<input  id="email"size=+50 type="email" name="EmailId">
+</td>
+</tr>
+<tr>
+<td>
+<font size=+2> <b> Password</b>
+</td>
+<td>
+<input id="pwd"size=+50 type="password" name="Password">
+</td>
+</tr>
+</table>
+<br>
+<input type="button" name= "Login" value ="Login" id="lg">
+</form>
+</center>
+
+</body>
+<script type="text/javascript">
+$('#lg').on('click',function(e){
+				e.preventDefault();
+				$.ajax({
+					type:'POST',
+					url:'/LoginFormAPI/',
+					data:{
+						
+						email:$('#email').val(),
+						
+						pwd:$('#pwd').val(),
+						
+						},
+						dataType: 'json',
+						success:function(data){
+                            if(data['meta']['status']==500){
+                                alert('please enter valid data')
+                            }
+                            if(data['meta']['status']=="htmlVideo"){
+                                window.location.href='/htmlVideo'
+                            }
+                            if(data['meta']['status']=="javaVideo"){
+                                window.location.href='/javaVideo'
+                            }
+                            if(data['meta']['status']=="pythonVideo"){
+                                window.location.href='/pythonVideo'
+                            }
+						console.log('HEREE')
+						
+						}
+						});
+                    })
+                        
+        </script>
+</html

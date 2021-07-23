@@ -1,0 +1,55 @@
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Online Education Portal</title>
+    <link rel="stylesheet" href="{% static 'css/Efront.css'%}"/>
+   </head>
+   <body>
+    <nav id="navbar">
+        <div id="logo">
+            <img src="{% static 'images/cu.jpg'%}"/>
+        </div>
+        <ul>
+            <li class="item"><a href="#home">Home</a></li> 
+            <li class="item"><a href="#services-container">About</a></li>
+            <li class="item"><a href="#box2">Contact</a></li>
+			 <li class="item"onclick="window.location.href='LoginForm/';"><a href="#box3">Student Login</a></li>
+            <li class="item" onclick="window.location.href='admin/';"><a href="#contact">Admin Login</a></li>
+           
+        </ul>
+    </nav>
+	<section id="home">
+        
+    </section>
+	<section id="services-container">
+        <h1 class="h-primary center">
+        <div class="" id="services">
+            <div class="box" >
+               <img src="{% static 'images/html.jpg'%}" alt=""/> 
+                <h2 class="h-secondary center" onclick="window.location.href='htmlCourse/';">HTML Course</h2>
+               
+            </div>
+            <div class="box" id="box2">
+                <img src="{% static 'images/python.jpg'%}" alt=""/>
+                <h2 class="h-secondary center"onclick="window.location.href='pythonCourse/';">Python Course</h2>
+               
+            </div>
+            <div class="box" id="box3" >
+                <img src="{% static 'images/java.jpg'%}" alt=""/>
+                <h2 class="h-secondary center"onclick="window.location.href='javaCourse/';">javaCourse</h2>
+                
+            </div>
+        </div>
+    </section>
+	<section id="contact">
+        <h1 class="h-primary center">About Us</h1>
+		<center>
+	    <p><h2>phone no.-1234567895 </h2>
+		<p><h2>Email :- chandigarhuniversity@gmail.com </h2> </p>
+		<p> <h3>“In order to create an engaging learning experience, the role of instructor is optional, but the role of learner is essential.” </h3> </p>
+        
+    </section>
